@@ -1,9 +1,5 @@
 #include "shell.h"
 
-void *_realloc(void *o_pointer, unsigned int o_size, unsigned int n_size);
-void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b);
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-
 /**
  * _realloc - Reallocates a memory block using malloc and free.
  * @o_pointer: A pointer to the memory previously allocated.
@@ -14,38 +10,36 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
  *         If new_size == 0 and ptr is not NULL - NULL.
  *         Otherwise - a pointer to the reallocated memory block.
  */
-void *_realloc(void *o_pointer, unsigned int o_size, unsigned int n_size) {
-  unsigned int index;
-  void *buffer;
-  char *temp, *filler;
-
-  if (n_size == o_size)
-    return (o_pointer);
-
-  if (o_pointer == NULL) {
-    buffer = malloc(n_size);
-    if (buffer == NULL)
-      return (NULL);
-    return (buffer);
-  }
-
-  if (n_size == 0 && o_pointer != NULL) {
+void *_realloc(void *o_pointer, unsigned int o_size, unsigned int n_size)
+{
+    unsigned int index;
+    void *buffer;
+    char *temp, *filler;
+  
+    if (n_size == o_size)
+      return (o_pointer);
+    if (o_pointer == NULL)
+    {
+      buffer = malloc(n_size);
+      if (buffer == NULL)
+        return (NULL);
+      return (buffer);
+    }
+  if (n_size == 0 && o_pointer != NULL)
+  {
     free(o_pointer);
     return (NULL);
   }
-
   temp = o_pointer;
   buffer = malloc(sizeof(*temp) * n_size);
-  if (buffer == NULL) {
+  if (buffer == NULL)
+  {
     free(o_pointer);
     return (NULL);
   }
-
   filler = buffer;
-
   for (index = 0; index < o_size && index < n_size; index++)
     filler[index] = *temp++;
-
   free(o_pointer);
   return (buffer);
 }
