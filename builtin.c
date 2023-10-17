@@ -6,7 +6,7 @@
  *
  * Return: A function pointer to the corresponding builtin.
  */
-int (*search_builtin(char *command))(char **args,char **head)
+int (*search_builtin(char *command))(char **args, char **head)
 {
 	int i;
 	built_t My_BuiltInCommands[] = {
@@ -16,7 +16,7 @@ int (*search_builtin(char *command))(char **args,char **head)
 		{ "unsetenv", _unsetenv },
 		{ NULL, NULL }
 	};
-	
+
 	for (i = 0; My_BuiltInCommands[i].name; i++)
 	{
 		if (_strcmp(My_BuiltInCommands[i].name, command) == 0)
@@ -36,6 +36,7 @@ int (*search_builtin(char *command))(char **args,char **head)
 int my_exit(char **args, char **head)
 {
 	int exit_code;
+
 	if (args[1] == NULL)
 	{
 		return (-3);
@@ -62,11 +63,12 @@ int my_exit(char **args, char **head)
  * print_environment - Causes Function Termination.
  * @args: An array of arguments containing the exit value.
  * @head: A double pointer to the beginning of args.
+ * Return: integer
  */
 int print_environment(char **args, char __attribute__((__unused__)) **head)
 {
 	char **env = environ;
-	
+
 	if (!environ)
 		return (-1);
 	while (*env != NULL)
