@@ -12,7 +12,7 @@ int _setenv(char **args, char __attribute__((__unused__)) **head)
 	char *env_entry;
 	const char *value;
 	char **new_env;
-	int i,j, n_l;
+	int i, j, n_l;
 
 	name = args[0];
 	value = args[1];
@@ -57,7 +57,7 @@ int _setenv(char **args, char __attribute__((__unused__)) **head)
 int _unsetenv(char **args, char __attribute__((__unused__)) **front)
 {
 	const char *variable = args[0];
-	int i,j,v_l;
+	int i, j, v_l;
 
 	if (args == NULL || args[0] == NULL)
 		return (-1);

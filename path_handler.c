@@ -11,11 +11,10 @@
 char *add_path_dir(char *path)
 {
 	char *temp_path, *pwd;
-    int i, len = 0, pwd_length;
-    
-    pwd = *(_getenv("PWD")) + 4;
-    pwd_length = _strlen(pwd);
-    
+	int i, len = 0, pwd_length;
+
+	pwd = *(_getenv("PWD")) + 4;
+	pwd_length = _strlen(pwd);
 	for (i = 0; path[i]; i++)
 	{
 		if (path[i] == ':')
@@ -50,9 +49,7 @@ char *add_path_dir(char *path)
 				_strcat(temp_path, ":");
 		}
 		else
-		{
 			_strncat(temp_path, &path[i], 1);
-		}
 	}
 	return (temp_path);
 }
@@ -66,20 +63,19 @@ char *add_path_dir(char *path)
  */
 char *get_command(char *command)
 {
-    char **path, *temp;
+	char **path, *temp;
 	linked_l *dirs, *head;
 	struct stat st;
 	int dir_len, command_len;
-	
+
 	path = _getenv("PATH");
 	if (!path || !(*path))
 		return (NULL);
-		
 	dirs = get_dir(*path + 5);
 	head = dirs;
 	dir_len = _strlen(dirs->dir);
 	command_len = _strlen(command) + 2;
-	
+
 	while (dirs)
 	{
 		temp = malloc(dir_len + command_len);
@@ -125,27 +121,24 @@ linked_l *get_dir(char *path)
 	free(temp_copy);
 	if (!dir_list)
 		return (NULL);
-
 	new_node = malloc(sizeof(linked_l));
-    if (!new_node)
-	    return (NULL);
-
+	if (!new_node)
+		return (NULL);
 	for (index = 0; dir_list[index]; index++)
 	{
-	    	new_node->dir = dir_list[index];
-        	new_node->next = NULL;
-        	if (head)
-        	{
-        		while (last->next != NULL)
-        			last = last->next;
-        		last->next = new_node;
-        	}
-        	else
-        	{
-		        head = new_node;
-		        last = head;
-        	}
-	    
+		new_node->dir = dir_list[index];
+		new_node->next = NULL;
+		if (head)
+		{
+			while (last->next != NULL)
+				last = last->next;
+			last->next = new_node;
+		}
+		else
+		{
+			head = new_node;
+			last = head;
+		}
 		if (new_node == NULL)
 		{
 			free_list(head);
@@ -153,7 +146,6 @@ linked_l *get_dir(char *path)
 			return (NULL);
 		}
 	}
-
 	free(dir_list);
 
 	return (head);

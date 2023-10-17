@@ -4,7 +4,7 @@
  * main - entry point
  * Return: 0 on success, 1 on error
  */
-int main()
+int main(void)
 {
 	char *prompt = "$ ", *new_l = "\n";
 	int ret = 0, retn;

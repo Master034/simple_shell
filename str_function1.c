@@ -56,7 +56,7 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 		if (s1[i] == '\0' || s1[i] != s2[i])
 			return (s1[i] - s2[i]);
 	}
-	return 0;
+	return (0);
 }
 
 /**
@@ -82,7 +82,6 @@ char *_strcpy(char *dest, const char *src)
  * @c: The character to be located.
  *
  * Return: If c is found - a pointer to the first occurence.
- * 
  */
 const char *_strchr(const char *str, char c)
 {

@@ -72,7 +72,7 @@ char *add_path_dir(char *path);
 
 void free_list(linked_l *head);
 
-int (*search_builtin(char *command))(char **args,char **head);
+int (*search_builtin(char *command))(char **args, char **head);
 int my_exit(char **args, char **head);
 int print_environment(char **args, char __attribute__((__unused__)) **head);
 
