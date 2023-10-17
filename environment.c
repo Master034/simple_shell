@@ -12,7 +12,7 @@ int _setenv(char **args, char __attribute__((__unused__)) **head)
 	char *env_entry;
 	const char *value;
 	char **new_env;
-	int i, n_l;
+	int i,j, n_l;
 
 	name = args[0];
 	value = args[1];
@@ -40,7 +40,7 @@ int _setenv(char **args, char __attribute__((__unused__)) **head)
 		free(env_entry);
 		return (-1);
 	}
-	for (int j = 0; j < i; j++)
+	for (j = 0; j < i; j++)
 		new_env[j] = environ[j];
 	new_env[i] = env_entry;
 	new_env[i + 1] = NULL;
@@ -57,7 +57,7 @@ int _setenv(char **args, char __attribute__((__unused__)) **head)
 int _unsetenv(char **args, char __attribute__((__unused__)) **front)
 {
 	const char *variable = args[0];
-	int i, v_l;
+	int i,j,v_l;
 
 	if (args == NULL || args[0] == NULL)
 		return (-1);
@@ -67,7 +67,7 @@ int _unsetenv(char **args, char __attribute__((__unused__)) **front)
 		if (_strncmp(environ[i], variable, v_l) == 0 && environ[i][v_l] == '=')
 		{
 			free(environ[i]);
-			for (int j = i; environ[j]; j++)
+			for (j = i; environ[j]; j++)
 			{
 				environ[j] = environ[j + 1];
 			}

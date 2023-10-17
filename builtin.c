@@ -52,7 +52,8 @@ int my_exit(char **args, char **head)
 		else
 		{
 			args -= 1;
-			free_arguments(args, head);
+			free(args);
+			free(head);
 			exit(exit_code);
 		}
 	}

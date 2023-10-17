@@ -2,11 +2,9 @@
 
 /**
  * main - entry point
- * @argc: arg count
- * @argv: arg vector
  * Return: 0 on success, 1 on error
  */
-int main(int argc, char *argv[])
+int main()
 {
 	char *prompt = "$ ", *new_l = "\n";
 	int ret = 0, retn;

@@ -49,12 +49,14 @@ int _strcmp(char *str1, char *str2)
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
-    for (size_t i = 0; i < n; i++) {
-        if (s1[i] == '\0' || s1[i] != s2[i])
-            return (s1[i] - s2[i]);
-    }
+	size_t i;
 
-    return 0;
+	for (i = 0; i < n; i++)
+	{
+		if (s1[i] == '\0' || s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+	}
+	return 0;
 }
 
 /**
