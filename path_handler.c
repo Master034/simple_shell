@@ -38,12 +38,10 @@ char *add_path_dir(char *path)
 			if (i == 0)
 			{
 				_strcat(temp_path, pwd);
-				_strcat(temp_path, ":");
 			}
 			else if (path[i + 1] == ':' || path[i + 1] == '\0')
 			{
 				_strcat(temp_path, ":");
-				_strcat(temp_path, pwd);
 			}
 			else
 				_strcat(temp_path, ":");
